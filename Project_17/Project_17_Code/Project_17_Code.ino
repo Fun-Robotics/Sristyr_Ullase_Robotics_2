@@ -24,12 +24,12 @@ void loop() {
     digitalWrite(12, HIGH);
   }
   else if (t == '3') { //turn right (left side motors rotate in forward direction, right side motors doesn't rotate)
-    digitalWrite(9, LOW);
-    digitalWrite(10, LOW);
-    digitalWrite(11, HIGH);
-    digitalWrite(12, LOW);
+    digitalWrite(9,LOW);
+    digitalWrite(10,LOW);
+    digitalWrite(11,HIGH);
+    digitalWrite(12,LOW);
   }
-  else if (t == '4') { //turn left (right side motors rotate in forward direction, left side motors doesn't rotate)
+    else if(t == '4'){ //turn left (right side motors rotate in forward direction, left side motors doesn't rotate)
     digitalWrite(9, HIGH);
     digitalWrite(10, LOW);
     digitalWrite(11, LOW);

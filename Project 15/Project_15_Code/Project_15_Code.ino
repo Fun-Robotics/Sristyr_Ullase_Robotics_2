@@ -5,7 +5,10 @@ void setup() {
 }
 void loop() {
   while (Serial.available() > 0) {
-    switchstate = Serial.read(); Serial.print(switchstate); Serial.print("\n"); delay(15);
+    switchstate = Serial.read();
+    Serial.print(switchstate);
+    Serial.print("\n");
+    delay(15);
     if (switchstate == '1') {
       digitalWrite(5, HIGH);
     }

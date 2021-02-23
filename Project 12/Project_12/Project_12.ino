@@ -4,7 +4,7 @@
 #define TRIG_PIN A0
 #define ECHO_PIN A1
 #define MAX_DISTANCE 50 //changed
-#define MAX_SPEED 100 // sets speed of DC motors 
+#define MAX_SPEED 100 // sets speed of DC motors
 #define MAX_SPEED_OFFSET 20
 NewPing sonar(TRIG_PIN, ECHO_PIN, MAX_DISTANCE);
 AF_DCMotor motor1(2, MOTOR12_1KHZ);
@@ -24,31 +24,33 @@ void loop() {
   int distanceR = 0;
   int distanceL = 0;
   delay(40);
-  if (distance <= 45) //changed {
+  if (distance <= 45) //changed
+  {
     moveStop();
-  delay(100);
-  moveBackward();
-  delay(300);
-  moveStop();
-  delay(200);
-  distanceR = lookRight();
-  delay(200);
-  distanceL = lookLeft();
-  delay(200);
-  if (distanceR >= distanceL) {
-    turnRight();
+    delay(100);
+    moveBackward();
+    delay(300);
     moveStop();
-  }
-  else
-  { turnLeft();
-    moveStop();
-  }
-}
-else {
+    delay(200);
+    distanceR = lookRight();
+    delay(200);
+    distanceL = lookLeft();
+    delay(200);
+    if (distanceR >= distanceL)
+    {
+      turnRight();
+      moveStop();
+    } else
+    {
+      turnLeft();
+      moveStop();
+    }
+  } else
+  {
 
-  moveForward();
-}
-distance = readPing();
+    moveForward();
+  }
+  distance = readPing();
 }
 int lookRight()
 {
@@ -99,7 +101,9 @@ void moveBackward() {
   goesForward = false;
   motor1.run(BACKWARD);
   motor2.run(BACKWARD);
-  for (speedSet = 0; speedSet < MAX_SPEED; speedSet += 2) {
+  for (speedSet = 0; speedSet < MAX_SPEED; speedSet += 2) /*slowly bring the speed up to avoid loading down the batteries
+    too quickly */
+  {
     motor1.setSpeed(speedSet);
     motor2.setSpeed(speedSet + MAX_SPEED_OFFSET);
     delay(5);
@@ -118,5 +122,4 @@ void turnLeft() {
   delay(300);
   motor1.run(FORWARD);
   motor2.run(FORWARD);
-}
 }
